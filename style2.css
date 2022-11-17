@@ -76,9 +76,6 @@ button:hover{
     justify-content: space-between;
     
 }
-.battle-ground-inner-box div{
-    
-}
 .player-side,
 .computer-side{
     display: flex;
