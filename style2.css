@@ -1,0 +1,119 @@
+
+.game-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+}
+.game-content{
+    width: 40vw;
+    height: 100vh;
+    flex: 1;
+}
+body{
+    background-color: rgb(255, 255, 255);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: auto;
+    margin-left: 30vw;
+}
+img {
+    max-width: 100%;
+    max-height: 100%;
+    width: 7rem;
+}
+.buttons{
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+button{
+    padding: 0.5rem;
+    cursor: pointer;
+}
+button:hover{
+    scale: 1.1;
+    transition: 0.1s;
+    box-shadow: 0px 0px 10px 2px grey;
+}
+.victory,
+.defeat,
+.draw{
+    transition: 0.2s;
+}
+.defeat{
+    box-shadow: 0px 0px 30px 5px inset rgba(255, 0, 0, 0.541);
+}
+.victory{
+    box-shadow: 0px 0px 30px 5px inset rgba(0, 255, 13, 0.541);
+}
+.draw{
+    box-shadow: none;
+}
+#rock,
+#paper,
+#scissors{
+    background-color: rgb(255, 255, 255);
+    background-size: cover;
+    width: 25%;
+    border: 3px solid black;
+    border-radius: 1rem;
+}
+.battle-ground{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    border: 3px solid black;
+    border-radius: 1rem;
+    width: 70%;
+    min-height: 25%;
+    max-height: 40%;
+    padding: 2rem;
+}
+.battle-ground-inner-box{
+    display: flex;
+    flex: 3;
+    justify-content: space-between;
+    
+}
+.battle-ground-inner-box div{
+    
+}
+.player-side,
+.computer-side{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    flex: 3;
+}
+.vs{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+#player-pick,
+#computer-pick{
+    
+    min-width: 15%;
+    flex: 1;
+}
+.results{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+.points{
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+h2,
+h1,
+h3,
+p{
+    margin-left: auto;
+    margin-right: auto;
+}

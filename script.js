@@ -23,77 +23,102 @@ If its a draw noone gets points and round starts again.
 Game ends when someone gets 5 points
 
 */
+const results = document.querySelector('.results');
+const playerPick = document.querySelector('#player-pick');
+const computerPick = document.querySelector('#computer-pick');
+const rock = document.querySelector('#rock');
+const paper = document.querySelector('#paper');
+const scissors = document.querySelector('#scissors');
+const outcome = document.querySelector('.outcome');
+const playerPoints = document.querySelector('#player-points');
+const computerPoints = document.querySelector('#computer-points')
+const battleGround = document.querySelector('.battle-ground')
 
-const getComputerChoice=()=>{
-let choice=getRandom(3)
-if(choice===1){
-    return 'rock'
-}else if(choice===2){
-    return 'paper'
-}else if(choice===3){
-    return 'scissors'
-}
+const getComputerChoice = () => {
+    let choice = getRandom(3)
+    if (choice === 1) {
+        computerPick.innerHTML = '<img src="./images/hand-rock-svgrepo-com.svg" alt="">'
+        return 'rock'
+    } else if (choice === 2) {
+        computerPick.innerHTML = '<img src="./images/paper-roll-svgrepo-com.svg" alt="">'
+        return 'paper'
+    } else if (choice === 3) {
+        computerPick.innerHTML = '<img src="./images/scissors-svgrepo-com.svg" alt="">'
+        return 'scissors'
+    }
 }
 
-const getRandom=(number)=> Math.floor(Math.random()*number)+1
+
+const getRandom = (number) => Math.floor(Math.random() * number) + 1
 getComputerChoice()
 
+let playerPoint = 0;
+let computerPoint = 0;
 
-const getPlayerChoice=()=>{
-    let playerChoice=prompt("What's your draw? (Rock, Paper, Scissors)").toLowerCase()
-    if(playerChoice==='rock'){
-        return playerChoice
-    }else if(playerChoice==='paper'){
-        return playerChoice
-    }else if(playerChoice==='scissors'){
-        return playerChoice
+const returnWinner = () => {
+    if (playerPoint === 5) {
+        outcome.textContent = 'YOU WON!';
+        playerPoint = 0;
+        computerPoint = 0;
+        returnPoints();
+    } else if (computerPoint === 5) {
+        outcome.textContent = 'YOU LOSE!';
+        playerPoint = 0;
+        computerPoint = 0;
+        returnPoints();
+
+    }}
+    function playing(){
+        playerPoint++;
+        outcome.textContent = 'You gain a point'
+        returnPoints();
+        returnWinner();
+        battleGround.classList.toggle('victory');
     }
-    console.log("Not what I wanted. Try again!")
-    return getPlayerChoice()
-}
 
-
-
-console.log("Let's play rock, paper, scissors.")
-playGame()
-
-function playGame(){
-    let playerPoints=0
-    let computerPoints=0
-    while(true){
-        const result=playRound()
-        if(result==='draw'){
-            continue
+    const playRound = (playerSelection) => {
+        const computerSelection = getComputerChoice()
+        if (computerSelection === playerSelection) {
+            outcome.textContent = 'DRAW!'
+            returnPoints();
+            returnWinner();
+            battleGround.classList.remove('victory','defeat');
+            return;
+        } else if (playerSelection === 'rock' & computerSelection === 'scissors') {
+            playing();
+            return;
+        } else if (playerSelection === 'paper' & computerSelection === 'rock') {
+            playing();
+            return;
+        } else if (playerSelection === 'scissors' & computerSelection === 'paper') {
+            playing();
+            return;
         }
-        result?playerPoints++:computerPoints++
-        console.log(`You:${playerPoints} vs. Computers:${computerPoints}`)
-        if(playerPoints===2){
-            alert('You win!')
-            break
-        }else if (computerPoints===2){
-            alert('You lose!')
-            break
-        }
+        computerPoint++;
+        outcome.textContent = 'Computer gains a point'
+        returnPoints();
+        returnWinner();
+        battleGround.classList.remove('victory');
+        battleGround.classList.toggle('defeat');
     }
-}
+    function returnPoints() {
+        playerPoints.textContent = playerPoint;
+        computerPoints.textContent = computerPoint;
+    }
+    computerPick.innerHTML = ''
 
-function playRound(){
-    const computerSelection=getComputerChoice()
-    const playerSelection=getPlayerChoice()
-    console.log(`You selected ${playerSelection} vs computer's ${computerSelection}`)
-    if(computerSelection===playerSelection){
-        console.log('DRAW!')
-        return 'draw'
-    }else if(playerSelection==='rock'&computerSelection==='scissors'){
-        console.log('You gain a point')
-        return true
-    }else if(playerSelection==='paper'&computerSelection==='rock'){
-        console.log('You gain a point')
-        return true
-    } else if(playerSelection==='scissors'&computerSelection==='paper'){
-        console.log('You gain a point')
-        return true
-    }
-    console.log('Computer gains a point')
-    return false
-}
+
+
+
+    rock.addEventListener('click', () => playRound('rock'))
+    rock.addEventListener('click', () => {
+        playerPick.innerHTML = '<img src="./images/hand-rock-svgrepo-com.svg" alt="">'
+    })
+    paper.addEventListener('click', () => playRound('paper'))
+    paper.addEventListener('click', () => {
+        playerPick.innerHTML = '<img src="./images/paper-roll-svgrepo-com.svg" alt="">'
+    })
+    scissors.addEventListener('click', () => playRound('scissors'))
+    scissors.addEventListener('click', () => {
+        playerPick.innerHTML = '<img src="./images/scissors-svgrepo-com.svg" alt="">'
+    })

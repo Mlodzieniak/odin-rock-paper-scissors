@@ -1,13 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style2.css">
+    <style></style>
 </head>
+
 <body>
-    
+    <div class="game-content">
+        <h1>Choose your weapon!</h1>
+        <div class="buttons">
+            <button id="rock"><img src="./images/hand-rock-svgrepo-com.svg" alt=""></button>
+            <button id="paper"><img src="./images/paper-roll-svgrepo-com.svg" alt=""></button>
+            <button id="scissors"><img src="./images/scissors-svgrepo-com.svg" alt=""></button>
+        </div>
+        <div class="battle-ground">
+            <h2>BATTLE GROUND</h2>
+            <div class="battle-ground-inner-box">
+                <div class="player-side">
+                    <h3>You</h3>
+                    <div id="player-pick"></div>
+                </div>
+                <div class="vs">
+                    <h3>VS</h3>
+                </div>
+                <div class="computer-side">
+                    <h3>Enemy</h3>
+                    <div id="computer-pick"></div>
+                </div>
+            </div>
+        </div>
+        <div class="results">
+            <h3 class="outcome">Nobody scored yet!</h3>
+            <div class="points">
+                <h1 id="player-points">0</h1>
+                <h1>:</h1>
+                <h1 id="computer-points">0</h1>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
